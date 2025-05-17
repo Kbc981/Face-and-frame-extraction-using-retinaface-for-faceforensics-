@@ -54,7 +54,6 @@ The primary dependencies are:
     av
     ```
 
-
 ## Usage
 
 1.  **Configure Parameters:**
@@ -68,7 +67,6 @@ The primary dependencies are:
     MAX_VIDEOS = 200                         # Limit number of videos to process per category (real/fake)
     BATCH_SIZE = 8                           # Number of frames to process in one batch
     ```
-    
 
 2.  **Run the script:**
     Execute the Jupyter notebook cells or run the equivalent Python script. The main execution starts with:
@@ -76,7 +74,6 @@ The primary dependencies are:
     if __name__ == '__main__':
         main() #
     ```
-
 
 ## Configuration Details
 
@@ -90,4 +87,34 @@ The primary dependencies are:
 * `USE_GPU`: Automatically determined by checking `torch.cuda.is_available()`.
 * `DEVICE_ID`: Set to `0` for GPU or `-1` for CPU, used by InsightFace.
 
+## Example Extracted Faces
 
+Below are some examples of faces that can be extracted by this script. The script would save these into a structured directory like `extracted_faces/real/video_name/` or `extracted_faces/fake/video_name/`.
+
+**Real Faces:**
+
+<table>
+  <tr>
+    <td><img src="frame_0001_face_00.jpg" alt="Real Face Example 1" width="200"/></td>
+    <td><img src="frame_0002_face_00.jpg" alt="Real Face Example 2" width="200"/></td>
+  </tr>
+  <tr>
+    <td align="center">Example Real Face 1</td>
+    <td align="center">Example Real Face 2</td>
+  </tr>
+</table>
+
+**Deepfake Faces:**
+
+<table>
+  <tr>
+    <td><img src="frame_0004_face_00.jpg" alt="Deepfake Face Example 1" width="200"/></td>
+    <td><img src="frame_0005_face_00.jpg" alt="Deepfake Face Example 2" width="200"/></td>
+  </tr>
+  <tr>
+    <td align="center">Example Deepfake Face 1</td>
+    <td align="center">Example Deepfake Face 2</td>
+  </tr>
+</table>
+
+*(Note: For the above images to display in your GitHub README, ensure the image files (`frame_0001_face_00.jpg`, `frame_0002_face_00.jpg`, `frame_0004_face_00.jpg`, `frame_0005_face_00.jpg`) are present in the root of your repository or update the `src` paths accordingly if you place them in a subdirectory like `docs/images/`.)*
