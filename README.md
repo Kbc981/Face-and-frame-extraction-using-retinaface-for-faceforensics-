@@ -95,7 +95,7 @@ Below are some examples of faces that can be extracted by this script. The scrip
 
 <table>
   <tr>
-    <td><img src= "![frame_0003_face_00](https://github.com/user-attachments/assets/ecde24c9-9cd6-4967-8c24-22dd7225afa6) alt = Real Face Example 1" width="200"/></td>
+    <td><img src= ![frame_0003_face_00](https://github.com/user-attachments/assets/ecde24c9-9cd6-4967-8c24-22dd7225afa6) alt = Real Face Example 1" width="200"/></td>
     <td><img src= ![frame_0004_face_00](https://github.com/user-attachments/assets/f7363a02-d93f-4c6e-82d0-aa2e268121f8) alt="Real Face Example 2" width="200"/></td>
   </tr>
   <tr>
