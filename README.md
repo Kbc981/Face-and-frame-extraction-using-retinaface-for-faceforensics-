@@ -54,6 +54,7 @@ The primary dependencies are:
     av
     ```
 
+
 ## Usage
 
 1.  **Configure Parameters:**
@@ -67,6 +68,7 @@ The primary dependencies are:
     MAX_VIDEOS = 200                         # Limit number of videos to process per category (real/fake)
     BATCH_SIZE = 8                           # Number of frames to process in one batch
     ```
+    
 
 2.  **Run the script:**
     Execute the Jupyter notebook cells or run the equivalent Python script. The main execution starts with:
@@ -74,6 +76,7 @@ The primary dependencies are:
     if __name__ == '__main__':
         main() #
     ```
+
 
 ## Configuration Details
 
@@ -86,58 +89,5 @@ The primary dependencies are:
 * `BATCH_SIZE`: The number of frames to group together for batch processing by the face detector. Adjust based on GPU memory.
 * `USE_GPU`: Automatically determined by checking `torch.cuda.is_available()`.
 * `DEVICE_ID`: Set to `0` for GPU or `-1` for CPU, used by InsightFace.
-
-
-
-## Output
-
-The script will generate a directory structure under the `OUTPUT_BASE` directory as follows:
-
-extracted_faces/
-├── real/
-│   ├── video1_name/
-│   │   ├── frame_0000_face_00.jpg
-│   │   ├── frame_0000_face_01.jpg
-│   │   └── ...
-│   ├── video2_name/
-│   │   └── ...
-│   └── ...
-├── fake/
-│   ├── videoA_name/
-│   │   ├── frame_0000_face_00.jpg
-│   │   └── ...
-│   └── ...
-└── ...
-
-
-
-
-If running in a Kaggle or Colab environment, the `OUTPUT_BASE` directory will also be zipped into `extracted_faces.zip`.
-
-## Notes & Troubleshooting
-
-* **ONNX Runtime Device:** The script includes checks to print the ONNX Runtime device being used (GPU or CPU).
-    ```python
-    import onnxruntime as ort
-    print("[DEBUG] ONNX Runtime device:", ort.get_device()) #
-    ```
-* **InsightFace Model Initialization:** The script initializes `FaceAnalysis` with the `buffalo_l` model and specifies `CUDAExecutionProvider` if a GPU is available.
-    ```python
-    face_detector = FaceAnalysis(name="buffalo_l", providers=["CUDAExecutionProvider"]) #
-    face_detector.prepare(ctx_id=0, det_size=(640, 640)) #
-    ```
-    (Note: In the provided notebook, the initialization block for `face_detector` within the main processing script section is commented out. Ensure it is active or initialized as shown in earlier cells for the script to function correctly.)
-* **Error Handling:** The script includes basic error handling for face detection and resizing. Warnings for skipped batches or resize failures are printed to the console.
-    * `[WARN] Unexpected detection output format...`
-    * `[WARN] Resize failed...`
-    * `[WARN] Skipping batch due to error...`
-* **Keyboard Interrupt:** The traceback indicates a `KeyboardInterrupt` during a run, suggesting the process was manually stopped. This is not an error in the script itself but an external interruption.
-* **Path Configuration:** Ensure that `REAL_PATH` and `FAKE_PATH` point to valid directories containing video files. The script expects these paths to be accessible.
-* **Memory Usage:** Processing very high-resolution videos or using a very large `BATCH_SIZE` might lead to high memory consumption, especially on systems with limited GPU VRAM. Adjust `BATCH_SIZE` and `OUTPUT_FACE_SIZE` if you encounter memory issues.
-
-Sources
-
-
-
 
 
